@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function checkForm() {
+            var firstName = document.form1.firstName.value;
+            alert("First name is " + firstName);
+            if (firstName === "" || firstName === null) {
+                alert("Sorry, name field must be filled in");
+                return false;
+            }
+            var lastName = document.form1.lastName.value;
+            alert("Last name is " + lastName);
+            if (lastName === "" || lastName === null) {
+                alert("Sorry, name field must be filled in");
+                return false;
+            }
+            var x = document.form1.email.value;
+            var atpos = x.indexOf("@");
+            var dotpos = x.lastIndexOf(".");
+            alert("email is " + x);
+            if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                alert("Not a valid e-mail address");
+                return false;
+            }
+            var phoneNum = document.form1.phoneNum.value;
+            alert("phone is " + phoneNum);
+            if ((phoneNum === "" || phoneNum === null)) {
+                alert("Sorry, phone field must be filled in");
+                return false;
+            }
+            var lang = document.form1.language.value;
+            alert("language is " + lang);
+            if (lang === "" || lang === null) {
+                alert("Please choose a language");
+                return false;
+            }
+            var level = document.form1.level.value;
+            alert("level is " + level);
+            if (level === "" || level === null) {
+                alert("Please choose a skill level");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+<h1>Learn a Language</h1><br>
+<form name="form1" action="process.jsp" method="post">
+    First Name: <input type="text" name="firstName">
+    Last Name: <input type="text" name="lastName">
+    email: <input type="text" name="email">
+    Phone Number: <input type="tel" pattern="\d{3}[\(]\d{3}[\)]\d{4}" name="phoneNum"><br>
+
+    <select name="language" id="lang">
+
+        <option value="">Choose a Language</option>
+        <option value="English">English</option>
+        <option value="Spanish">Spanish</option>
+        <option value="French">French</option>
+        <option value="German">German</option>
+    </select>
+
+    <select name="level" id="level">
+        <option value="">Choose a Skill Level</option>
+
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+    </select>
+
+    <button type="submit" onclick="return checkForm()">Start Learning Now</button>
+
+</form>
+</body>
+</html>
